@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="AcceptAFKServer.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:AcceptAFKServer"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Background="#25242b">
+        <StackPanel
+            MaxWidth="400"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Background="#25242b"
+            Orientation="Vertical">
+            <Image
+                MaxWidth="400"
+                MaxHeight="400"
+                Margin="0,0,0,20"
+                Source="..\Assets\Accept_Image.png" />
+            <!--  Cor que achei de laranja #da9334  -->
+            <TextBlock
+                MaxWidth="400"
+                MaxHeight="400"
+                Margin="0,0,0,20"
+                Foreground="#da9334"
+                TextAlignment="Center">
+                Hello to AcceptAFK Games !
+            </TextBlock>
+            <Button
+                x:Name="start_Button"
+                MaxWidth="400"
+                MaxHeight="400"
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                Click="StartButton">
+                Start
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

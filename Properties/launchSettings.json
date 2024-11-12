@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AcceptAFKServer (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AcceptAFKServer (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
