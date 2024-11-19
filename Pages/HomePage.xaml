@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="AcceptAFKServer.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:AcceptAFKServer.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <!--  Context Row Definitions  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--  Context Column Definitions  -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--  Área Dinâmica de Conteúdo  -->
+        <Frame x:Name="ContentFrame" Grid.Row="0" />
+
+        <!--<Button
+                HorizontalAlignment="Center"
+                Click="NavigateBarButton"
+                Content="Config" />-->
+
+        <!--  Conteudo do Menu Inferior  -->
+        <Grid
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="Red">
+
+            <FlipView
+                x:Name="MyFlipView"
+                Height="150"
+                MaxWidth="200"
+                BorderBrush="Black"
+                BorderThickness="1"
+                SelectionChanged="MyFlipView_SelectionChanged">
+                <FlipView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </FlipView.ItemsPanel>
+            </FlipView>
+        </Grid>
+
+    </Grid>
+</Page>

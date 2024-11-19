@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Window
-    x:Class="AcceptAFKServer.MainWindow"
+<Page
+    x:Class="AcceptAFKServer.Pages.StartPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:AcceptAFKServer"
+    xmlns:local="using:AcceptAFKServer.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
+
     <Grid
         HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch"
@@ -37,9 +39,9 @@
                 MaxHeight="400"
                 Margin="0,0,0,20"
                 HorizontalAlignment="Center"
-                Click="StartButton">
+                Click="Start_Button">
                 Start
             </Button>
         </StackPanel>
     </Grid>
-</Window>
+</Page>
