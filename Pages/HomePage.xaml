@@ -13,12 +13,12 @@
         <!--  Context Row Definitions  -->
         <Grid.RowDefinitions>
             <RowDefinition Height="8*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="*" MinHeight="164" />
+            <RowDefinition Height="*" MinHeight="16" MaxHeight="50" />
         </Grid.RowDefinitions>
         <!--  Context Column Definitions  -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!--  Área Dinâmica de Conteúdo  -->
@@ -30,25 +30,39 @@
                 Content="Config" />-->
 
         <!--  Conteudo do Menu Inferior  -->
-        <Grid
-            Grid.Row="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            Background="Red">
-
-            <FlipView
-                x:Name="MyFlipView"
-                Height="150"
-                MaxWidth="200"
-                BorderBrush="Black"
-                BorderThickness="1"
-                SelectionChanged="MyFlipView_SelectionChanged">
-                <FlipView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </FlipView.ItemsPanel>
-            </FlipView>
+            <!--Background="Red"-->
+        <Grid Grid.Row="1"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              MinWidth="164">
+            <!--<Ellipse Width="164"
+                         Height="164"
+                         Fill="Transparent"
+                         Stroke="#DA6014"
+                         StrokeThickness="5" />-->
+            <!--<Border Height="160"
+                        Width="160"
+                        BorderBrush="Blue"
+                        BorderThickness="5"
+                        CornerRadius="80" />-->
+            <Border Height="150"
+                    Width="150"
+                    CornerRadius="75"
+                    BorderBrush="#DA6014"
+                    BorderThickness="3">
+                <FlipView x:Name="MyFlipView"
+                          Height="150"
+                          MaxWidth="200"
+                          SelectionChanged="MyFlipView_SelectionChanged"
+                          HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="Center">
+                    <FlipView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </FlipView.ItemsPanel>
+                </FlipView>
+            </Border>
         </Grid>
 
     </Grid>
