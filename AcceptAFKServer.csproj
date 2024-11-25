@@ -14,7 +14,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Pages\BlankPage1.xaml" />
+    <None Remove="Pages\GamesPage.xaml" />
+    <None Remove="Pages\WifiPage.xaml" />
     <None Remove="ViewModels\BlankPage1.xaml" />
   </ItemGroup>
 
@@ -46,7 +47,12 @@
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Pages\BlankPage1.xaml">
+    <Page Update="Pages\WifiPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\GamesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
