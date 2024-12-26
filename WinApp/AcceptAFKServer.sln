@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptAFKServer", "AcceptAFKServer.csproj", "{955D1C22-2218-4F1A-A9F8-4A75F807F036}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceptServer", "..\AcceptInfraServer\AcceptServer.csproj", "{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -33,6 +35,18 @@ Global
 		{955D1C22-2218-4F1A-A9F8-4A75F807F036}.Release|x86.ActiveCfg = Release|x86
 		{955D1C22-2218-4F1A-A9F8-4A75F807F036}.Release|x86.Build.0 = Release|x86
 		{955D1C22-2218-4F1A-A9F8-4A75F807F036}.Release|x86.Deploy.0 = Release|x86
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Debug|x64.Build.0 = Debug|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Debug|x86.Build.0 = Debug|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Release|ARM64.Build.0 = Release|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Release|x64.ActiveCfg = Release|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Release|x64.Build.0 = Release|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3E1448B-09FE-41C6-8F37-47F3C601BCE7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

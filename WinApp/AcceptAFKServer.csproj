@@ -35,6 +35,11 @@
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
+ <!-- AcceptInfraServer project -->
+<ItemGroup>
+  <ProjectReference Include="..\AcceptInfraServer\AcceptServer.csproj" />
+</ItemGroup>
+
   <!--
     Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
     Tools extension to be activated for this project even if the Windows App SDK Nuget
