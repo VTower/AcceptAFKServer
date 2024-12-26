@@ -1,21 +1,9 @@
-﻿using AcceptAFKServer.Pages;
+﻿using System;
 using Microsoft.UI.Xaml;
+using AcceptAFKServer.Pages;
+using AcceptAFKServer.Common;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Shapes;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -44,6 +32,9 @@ public partial class App : Application
     protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
     {
         m_window = new MainWindow();
+
+        // Modifica e centraliza a tela.
+        WindowHandlerHelper.ResizeAndCenterWindow(m_window, 650, 900);
 
         // Create a Frame to act as the navigation context and navigate to the first page
         Frame rootFrame = new();
