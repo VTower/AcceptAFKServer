@@ -37,9 +37,9 @@
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
- <!-- AcceptInfraServer project -->
+ <!-- AcceptServer project -->
 <ItemGroup>
-  <ProjectReference Include="..\AcceptInfraServer\AcceptServer.csproj" />
+  <ProjectReference Include="..\AcceptServer\AcceptServer.csproj" />
 </ItemGroup>
 
   <!--
