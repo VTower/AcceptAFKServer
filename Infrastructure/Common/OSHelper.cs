@@ -1,7 +1,7 @@
 ﻿using AcceptAFKServer.Domain.Enums;
 using System.Runtime.InteropServices;
 
-namespace AcceptAFKServer.Application.Common;
+namespace AcceptAFKServer.Infrastructure.Common;
 
 public static class OSHelper
 {

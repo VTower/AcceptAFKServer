@@ -2,8 +2,8 @@ using Serilog;
 using ManagedNativeWifi;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
-using AcceptAFKServer.Application.Common;
 using AcceptAFKServer.Infrastructure.Services.Interfaces;
+using AcceptAFKServer.Infrastructure.Common;
 
 namespace AcceptAFKServer.Infrastructure.Services;
 

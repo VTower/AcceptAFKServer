@@ -3,7 +3,7 @@ using WinRT.Interop;
 using Windows.Graphics;
 using Microsoft.UI.Windowing;
 
-namespace AcceptAFKServer.Application.Common;
+namespace AcceptAFKServer.Infrastructure.Common;
 
 public static class WindowHandlerHelper
 {
