@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcceptAFKServer.Presentation.Pages.StartPage"
+             Title="StartPage">
+    <Grid
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Background="#25242b">
+        <StackPanel
+            MaxWidth="400"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            Background="#25242b"
+            Orientation="Vertical">
+            <Image
+                MaxWidth="400"
+                MaxHeight="400"
+                Margin="0,0,0,20"
+                Source="..\Assets\Accept_Image.png" />
+            <!--  Cor que achei de laranja #da9334  -->
+            <TextBlock
+                MaxWidth="400"
+                MaxHeight="400"
+                Margin="0,0,0,20"
+                Foreground="#da9334"
+                TextAlignment="Center">
+                Hello to AcceptAFK Games !
+            </TextBlock>
+            <Button
+                x:Name="start_Button"
+                MaxWidth="400"
+                MaxHeight="400"
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                Click="Start_Button">
+                Start
+            </Button>
+        </StackPanel>
+    </Grid>
+</ContentPage>
