@@ -9,7 +9,7 @@ namespace AcceptAFKServer.Infrastructure.Services;
 
 public class WifiConnector : IWifiConnector
 {
-    List<string> _networks = [];
+    public List<string> _networks = [];
     public bool isEthernet = false;
     public bool isWifi = false;
     public WifiConnector()
@@ -21,9 +21,8 @@ public class WifiConnector : IWifiConnector
     {
         Log.Information("#-# Find Wifi Start");
 
-        _networks = await GetWifiNetworks();
-
-        await Task.Delay(1000);
+        // ! Isso foi mudado, antes setava _networks com atribuicao
+        await GetWifiNetworks();
     }
 
     async Task<List<string>> GetWifiNetworks()
@@ -32,63 +31,7 @@ public class WifiConnector : IWifiConnector
 
         // SO: Windows (10.0)
         if (OSHelper.IsWindows)
-        {
-            await Task.Run(() =>
-            {
-                NetworkInterface[] networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
-
-                foreach (var networkInterface in networkInterfaces)
-                {
-                    // Ignorar interfaces que não estão conectadas
-                    if (networkInterface.OperationalStatus != OperationalStatus.Up)
-                        continue;
-
-                    // Tipo de interface: Wi-Fi, Ethernet, etc.
-                    NetworkInterfaceType interfaceType = networkInterface.NetworkInterfaceType;
-
-                    // Todo: Configura se é ou não WiFI 
-                    isWifi = interfaceType == NetworkInterfaceType.Wireless80211;
-                    isEthernet = interfaceType == NetworkInterfaceType.Ethernet;
-
-                    Log.Information($"Interface: {networkInterface.Name}");
-                    Log.Information($"Descrição: {networkInterface.Description}");
-                    Log.Information($"Tipo: {(isWifi ? "Wi-Fi" : isEthernet ? "Cabo" : "Outro")}");
-
-                    // Obtém informações do endereço IP associado
-                    var ipProps = networkInterface.GetIPProperties();
-                    var gateway = ipProps.GatewayAddresses.FirstOrDefault()?.Address;
-
-                    Log.Information($"Gateway: {gateway}");
-                    Log.Information(new string('-', 30));
-
-                    // Obtém o nome da rede (SSID para Wi-Fi)
-                    if (isWifi)
-                    {
-                        var connectedNetwork = NativeWifi.EnumerateAvailableNetworks();
-                        Log.Information($"SSID conectado: {connectedNetwork}");
-                    }
-                }
-
-                ProcessStartInfo procesInfo = new("nmcli", "-f SSID dev wifi")
-                {
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                };
-
-                using Process? process = Process.Start(procesInfo);
-
-                using StreamReader? reader = process!.StandardOutput;
-
-                while (!reader.EndOfStream)
-                {
-                    string? line = reader.ReadLine();
-                    // TODO: Ver se precisa de tratativa para line null
-                    if (line is not null)
-                        networks.Add(line.Trim());
-                }
-            });
-        }
+            await GetWifiWindows();
 
         // SO: Linux (Suse)
         if (OSHelper.IsLinux)
@@ -120,5 +63,87 @@ public class WifiConnector : IWifiConnector
         }
 
         return networks;
+    }
+
+    async Task GetWifiWindows()
+    {
+        NetworkInterface[] networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+
+        foreach (var networkInterface in networkInterfaces)
+        {
+            // Ignorar interfaces que não estão conectadas
+            if (networkInterface.OperationalStatus != OperationalStatus.Up)
+                continue;
+
+            // Tipo de interface: Wi-Fi, Ethernet, etc.
+            NetworkInterfaceType interfaceType = networkInterface.NetworkInterfaceType;
+
+            // Todo: Configura se é ou não WiFI 
+            isWifi = interfaceType == NetworkInterfaceType.Wireless80211;
+            isEthernet = interfaceType == NetworkInterfaceType.Ethernet;
+
+            Log.Information($"Interface: {networkInterface.Name}");
+            Log.Information($"Descrição: {networkInterface.Description}");
+            Log.Information($"Tipo: {(isWifi ? "Wi-Fi" : isEthernet ? "Cabo" : "Outro")}");
+
+            // Obtém informações do endereço IP associado
+            var ipProps = networkInterface.GetIPProperties();
+            var gateway = ipProps.GatewayAddresses.FirstOrDefault()?.Address;
+
+            Log.Information($"Gateway: {gateway}");
+            Log.Information(new string('-', 30));
+
+            // Obtém o nome da rede (SSID para Wi-Fi)
+            if (isWifi)
+            {
+                var connectedNetwork = NativeWifi.EnumerateAvailableNetworks();
+                Log.Information($"SSID conectado: {connectedNetwork}");
+            }
+        }
+
+
+        foreach (var ni in NetworkInterface.GetAllNetworkInterfaces())
+        {
+            if (ni.OperationalStatus == OperationalStatus.Up)
+            {
+                Console.WriteLine($"Nome: {ni.Name}");
+                Console.WriteLine($"Tipo: {ni.NetworkInterfaceType}");
+                Console.WriteLine($"Descrição: {ni.Description}");
+                Console.WriteLine($"ID: {ni.Id}");
+                Console.WriteLine("------");
+            }
+
+            _networks.Add(ni.Name);
+        }
+
+
+
+
+
+
+
+
+        // ? NO WINDOWS NMCLI EH EQUIVALENTE A NETSH MAS EH MAIS FACIL PEGAR PELO POWER SHELL
+        // Get-NetAdapter
+        // Get-NetConnectionProfile 
+        //     ProcessStartInfo procesInfo = new("nmcli", "-f SSID dev wifi")
+        //     {
+        //         RedirectStandardOutput = true,
+        //         UseShellExecute = false,
+        //         CreateNoWindow = true
+        //     };
+
+        //     using Process? process = Process.Start(procesInfo);
+
+        //     using StreamReader? reader = process!.StandardOutput;
+
+        //     while (!reader.EndOfStream)
+        //     {
+        //         string? line = reader.ReadLine();
+        //         // TODO: Ver se precisa de tratativa para line null
+        //         if (line is not null)
+        //             _networks.Add(line.Trim());
+        //     }
+
     }
 }
