@@ -2,10 +2,20 @@ namespace AcceptAFKServer.Presentation.Pages;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage()
-	{
-		InitializeComponent();
-	}
+    public HomePage()
+    {
+        InitializeComponent();
+    }
+
+    private void OnFindGameClicked(object sender, EventArgs e)
+    {
+        MainContent.Content = new GamesPage();
+    }
+
+    private void OnConfigClicked(object sender, EventArgs e)
+    {
+        MainContent.Content = new ConfigurationPage();
+    }
 }
 
 

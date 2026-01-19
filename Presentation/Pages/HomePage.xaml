@@ -2,62 +2,46 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AcceptAFKServer.Presentation.Pages.HomePage"
-             Title="HomePage">
-    <Grid>
-        <!--  Context Row Definitions  -->
-        <!-- <Grid.RowDefinitions>
-            <RowDefinition Height="8*" />
-            <RowDefinition Height="*" MinHeight="164" />
-            <RowDefinition Height="*" MinHeight="16" MaxHeight="50" />
-        </Grid.RowDefinitions> -->
-        <!--  Context Column Definitions  -->
-        <!-- <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions> -->
-
-        <!--  Área Dinâmica de Conteúdo  -->
-        <!-- <Frame x:Name="ContentFrame" Grid.Row="0" /> -->
-
-        <!--<Button
-                HorizontalAlignment="Center"
-                Click="NavigateBarButton"
-                Content="Config" />-->
-
-        <!--  Conteudo do Menu Inferior  -->
-            <!--Background="Red"-->
-        <!-- <Grid Grid.Row="1"
-              HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch"
-              MinWidth="164"> -->
-            <!--<Ellipse Width="164"
-                         Height="164"
-                         Fill="Transparent"
-                         Stroke="#DA6014"
-                         StrokeThickness="5" />-->
-            <!--<Border Height="160"
-                        Width="160"
-                        BorderBrush="Blue"
-                        BorderThickness="5"
-                        CornerRadius="80" />-->
-            <!-- <Border Height="150"
-                    Width="150"
-                    CornerRadius="75"
-                    BorderBrush="#DA6014"
-                    BorderThickness="3">
-                <FlipView x:Name="MyFlipView"
-                          Height="150"
-                          MaxWidth="200"
-                          SelectionChanged="MyFlipView_SelectionChanged"
-                          HorizontalContentAlignment="Center"
-                          VerticalContentAlignment="Center">
-                    <FlipView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </FlipView.ItemsPanel>
-                </FlipView>
-            </Border>
-        </Grid> -->
-
-    </Grid>
+             BackgroundColor="#CC9BC4E9">
+        <Grid RowDefinitions="*,Auto">
+                <!-- CONTEÚDO DINÂMICO -->
+                <ContentView x:Name="MainContent"
+                             Grid.Row="0"/>
+                <!-- MENU INFERIOR -->
+                <Grid Grid.Row="1"
+                      HeightRequest="60"
+                      BackgroundColor="#302d3f"
+                      ColumnDefinitions="*,4*,*">
+                        <Border Grid.Column="0"
+                                StrokeThickness="0"
+                                Margin="6">
+                                <Button Text="LogRealTime"
+                                        BackgroundColor="#D86BE9E3"
+                                        Clicked="OnFindGameClicked"/>
+                                <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFindGameClicked"/>
+                                </Border.GestureRecognizers>
+                        </Border>
+                        <Border Grid.Column="1"
+                                StrokeThickness="0"
+                                Margin="6">
+                                <Button Text="StartServer"
+                                        BackgroundColor="#D86BE9E3"
+                                        Clicked="OnFindGameClicked"/>
+                                <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFindGameClicked"/>
+                                </Border.GestureRecognizers>
+                        </Border>
+                        <Border Grid.Column="2"
+                                StrokeThickness="0"
+                                Margin="6">
+                                <Button Text="Config"
+                                        BackgroundColor="#D86BE9E3"
+                                        Clicked="OnConfigClicked"/>
+                                <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFindGameClicked"/>
+                                </Border.GestureRecognizers>
+                        </Border>
+                </Grid>
+        </Grid>
 </ContentPage>

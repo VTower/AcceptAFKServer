@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AcceptAFKServer.Presentation.Pages;
 
 namespace AcceptAFKServer
 {
@@ -7,11 +7,13 @@ namespace AcceptAFKServer
         public App()
         {
             InitializeComponent();
+            // Rout Registration 
+            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            return new Window(new MainPage());
         }
     }
 }

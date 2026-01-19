@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AcceptAFKServer.Presentation.Pages.GamesPage">
 
-    <!--Background="Red"-->
-    <Grid>
-        <!--Para fazer ROLAGEM INFINITA, USAR PullToRefresh ( Referenciado em WinUi 2 )-->
-        <FlipView MaxWidth="620" 
-                  Height="320"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch">
-            <Image Source="..\Assets\games_logo\dota_logo.png" 
-                   AutomationProperties.Name="dota"/>
-            <Image Source="..\Assets\games_logo\leagueOfLegends_logo.png" 
-                   AutomationProperties.Name="lol"/>
-            <Image Source="..\Assets\games_logo\counterStrike_logo.png"
-                   AutomationProperties.Name="cs2"/>
-            <FlipView.ItemsPanel >
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Vertical"/>
-                </ItemsPanelTemplate>
-            </FlipView.ItemsPanel>
+<!-- TODO: Adicionar coleta de index para quale está no meio. -->
+<ScrollView Orientation="Vertical">
+    <VerticalStackLayout
+        Spacing="20"
+        Padding="10"
+        BindableLayout.ItemsSource="{Binding Games}">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Image
+                    Source="{Binding}"
+                    WidthRequest="600"
+                    HeightRequest="400"/>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
 
-        </FlipView>
-    </Grid>
-</ContentPage>
+    </VerticalStackLayout>
+</ScrollView>
+
+</ContentView>
